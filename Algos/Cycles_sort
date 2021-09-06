@@ -1,0 +1,32 @@
+class CyclicSort {
+
+//amazon,google
+//for a range of n numbers
+       public void swap(int[] arr,int i,int c){
+        
+        int temp=arr[i];
+        arr[i]=arr[c];
+        arr[c]=temp;
+        
+    }
+    public int sort(int[] arr) {
+        
+        int i=0;
+        
+        while(i<arr.length){
+            
+            int c=arr[i];
+            
+            if(arr[i]!=arr[c]){
+                
+                swap(arr,i,c);
+                
+            }
+            else{
+                i++;
+            }
+            
+        }
+  
+  }
+   
