@@ -12,6 +12,6 @@ class Solution {
         result = Math.min(result, max - min);
     }
     return result;
-    
+
     }
 }
