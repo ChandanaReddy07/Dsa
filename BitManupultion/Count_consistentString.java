@@ -9,7 +9,11 @@ class Solution {
         for(int i=0;i<n;i++){
             mask = mask | 1<<(s.charAt(i)-'a');
         }
-        
+        //abc
+        //00000000000000
+        //a b c d e f g h....
+        //000000000 1 1 1
+        //mask=7
         int ans=0;
         
         for(String x : words){
@@ -19,8 +23,8 @@ class Solution {
             for(char ci: x.toCharArray()){
                 if((mask & (1<< (ci-'a')))!=0)
                     c++;
-                else
-                    break;
+                // else
+                //     break;
             }
             if(c==x.length())
                 ans++;     
