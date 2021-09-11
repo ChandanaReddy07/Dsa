@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/binary-gap/
 class Solution {
     //ek tarika 
     public int binaryGap(int N) {
