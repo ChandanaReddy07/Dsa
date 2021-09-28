@@ -5,7 +5,7 @@
 //   n = 2*x + 1
 //   n2 = (2*x + 1)2 = 4*x2 + 4*x + 1
 
-
+//kinda recursion aproach too
 public class findSqr {
     static int square(int n)
     {
