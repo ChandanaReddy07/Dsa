@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 public class TripletSum {
 
     public static boolean find3Numbers(int nums[], int n, int X) {

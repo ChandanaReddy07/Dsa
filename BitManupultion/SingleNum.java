@@ -3,8 +3,7 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
         int two=0;
-    List<Integer> list1=new ArrayList<Integer>();
-    List<Integer> list2=new ArrayList<Integer>();
+  
     for(int i=0;i<nums.length;i++)
     {
         two=two^nums[i];
