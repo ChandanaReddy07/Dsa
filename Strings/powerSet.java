@@ -9,8 +9,8 @@ public class powerSet {
             return;
         }
         
-        powerSet(baby, i, curr+ baby.charAt(i));
-        powerSet(baby, i, curr);
+        powerSet(baby, i+1, curr+ baby.charAt(i));
+        powerSet(baby, i+1, curr);
     }
     
 }
