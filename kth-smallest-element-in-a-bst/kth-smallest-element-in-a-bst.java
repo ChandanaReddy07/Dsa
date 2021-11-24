@@ -15,8 +15,9 @@
  */
 class Solution {
       int count=0;
+    
     public int kthSmallest(TreeNode root, int k) {
-        
+      
       if(root==null)
             return 0;
         
@@ -37,7 +38,5 @@ class Solution {
         
     }
   
-//     public int smll(TreeNode root,int k){
-         
-//     }
+
 }
