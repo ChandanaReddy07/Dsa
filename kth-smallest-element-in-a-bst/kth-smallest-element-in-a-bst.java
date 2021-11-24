@@ -11,32 +11,52 @@
  *         this.left = left;
  *         this.right = right;
  *     }
- * }+
+ * }
  */
 class Solution {
-      int count=0;
-    
-    public int kthSmallest(TreeNode root, int k) {
+// int counter=0;
+//     public int kthSmallest(TreeNode root, int k) {
+       
+//         return helper(root,k);       
+//     }
+//   public int helper(TreeNode root, int k){
       
-      if(root==null)
-            return 0;
+//       if(root==null)
+//             return -1;
         
-        int left = kthSmallest(root.left,k);
+//         int left = helper(root.left,k);
         
-        if(left!=0)
-            return left;
+//         if(left!=-1)
+//                  return left;
+ 
+//            counter++;
         
-           count++;
+//         if(k==counter)
+//             return root.val;
         
-        if(k==count)
-            return root.val;
-    
+//         int right= helper(root.right,k);
         
-        int right= kthSmallest(root.right,k);
-        
-        return right;
-        
+//         return right;
+//   }
+int i = 0;
+Integer fin = null;
+
+public int kthSmallest(TreeNode root, int k) {
+    traverse(root,k);
+    return fin;
+}
+
+//inorder traverse
+public void traverse(TreeNode root, int k)
+{
+    if(root != null )
+    {
+        traverse(root.left,k);
+        i++;
+        if(i == k) fin = root.val;
+        traverse(root.right,k);
     }
-  
+   
+}
 
 }
