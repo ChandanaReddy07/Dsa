@@ -6,17 +6,19 @@ class Solution {
         
         for(int i=0;i<(1<<n);i++){
             //yo
+            // i=0 to i=2^n
             
             List<Integer> lsa= new ArrayList<Integer>();
             
             for(int j=0;j<n;j++){
                 
-                //checking if the perticular bit set or not
+                //checling if the perticular bit set or not
                 if((i&(1<<j))!=0) 
                     lsa.add(nums[j]);
             }
             ls.add(lsa);  
         }
-        return ls;  
+        return ls;
+        
     }
 }
