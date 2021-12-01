@@ -11,13 +11,12 @@ class Solution {
             
             for(int j=0;j<n;j++){
                 
-                //checling if the perticular bit set or not
+                //checking if the perticular bit set or not
                 if((i&(1<<j))!=0) 
                     lsa.add(nums[j]);
             }
             ls.add(lsa);  
         }
-        return ls;
-        
+        return ls;  
     }
 }
