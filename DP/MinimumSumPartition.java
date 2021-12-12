@@ -3,7 +3,7 @@ class Solution
 
 	public int minDifference(int arr[], int N) 
 	{ 
-	    // Your code goes here
+	    // creating an extra array but neet to optimise the space
 	    int sum=0;
 	     for(int i=0;i<N;i++){
                 sum+=arr[i];
