@@ -25,7 +25,7 @@ class Solution {
         int _max=0;
         int temp;
         for(int k=i;k<=j;k++){
-            int x= solve(nums,i,k-1,l,nums[k]);
+            int x= solve(nums,i,k-1,l,nums[k]);//partitioning for two side check
             int y=solve(nums,k+1,j,nums[k],r);
             temp=x+y+nums[k]*l*r;
             if(_max<temp){
