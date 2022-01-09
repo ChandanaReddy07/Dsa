@@ -112,18 +112,19 @@ class Solution
     
     
     {
-        Node temp=del.next;
-        Node prev=null;
+        Node temp=del;
+        //Node prev=null;
         
-        while(del.next != null){
-           del.data = del.next.data;
-           prev=del;
-           del=del.next;
-        }
+        // while(del.next != null){
+        //   del.data = del.next.data;
+        //   prev=del;
+        //   del=del.next;
+        // }
         
-        prev.next=prev.next.next;
+        // prev.next=prev.next.next;
         
-        
+        del.data=del.next.data;
+        del.next=del.next.next;
          // Your code here
     }
 }
