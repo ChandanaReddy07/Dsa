@@ -5,7 +5,7 @@ class Solution {
         
         int n=points.length;
         
-        //min heap
+        //max heap
         PriorityQueue<int[]> p = new PriorityQueue<>((a,b) -> {
             if(a[0] == b[0]) {
                 return   b[1]-a[1];
