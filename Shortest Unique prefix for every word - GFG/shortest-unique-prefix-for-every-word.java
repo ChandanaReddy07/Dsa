@@ -30,20 +30,20 @@ class GFG {
 class Solution {
 
     static String[] findPrefixes(String[] arr, int N) {
-         int curr = 0;
+         int curr = 0;//a varible to iterate through all elements
         int length = 1;
-        String[] str = new String[N];
+        String[] str = new String[N];// ans string
         while (curr != N) {
             boolean check = false;
             String ans = arr[curr].substring(0 , length);
             for(int i = 0; i < N; i++) {
                 if (ans.length() <= arr[i].length() && i != curr && ans.equals(arr[i].substring(0 , ans.length() ))) {
                     length++;
-                    check = true;
+                    check = true;//yes it has a repeating prefix
                     break;
                 }
             }
-            if (!check) {
+            if (!check) { // if it is not repeating prefix 
                 str[curr] = ans;
                 length = 1;
                 curr++;
