@@ -13,6 +13,8 @@ class Solution {
             c++;
         }
     }
+	    
+	    //max heap algo
          PriorityQueue<int[]> p = new PriorityQueue<>((a,b) -> {
             if(a[0] == b[0]) {
                 return   b[1]-a[1];
