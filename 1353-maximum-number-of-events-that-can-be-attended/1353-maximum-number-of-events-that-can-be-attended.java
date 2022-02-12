@@ -2,9 +2,9 @@ class Solution {
     public int maxEvents(int[][] events) {
          Arrays.sort(events , (obj1,obj2) -> {
             if(obj1[1] == obj2[1]){
-                return new Integer(obj1[0]).compareTo(obj2[0]);
+                return obj1[0] - obj2[0];
             }
-            return new Integer(obj1[1]).compareTo(obj2[1]);
+            return obj1[1] - obj2[1];
         } );
         
         // N Log N
