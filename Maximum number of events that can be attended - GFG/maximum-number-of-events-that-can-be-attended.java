@@ -66,8 +66,8 @@ class Solution {
         for(int i=1;i<=100000;i++)
         set.add(i);
         int ans=0;
-        // Arrays.sort(a,new MIN());
-        Arrays.sort(a,Comparator.<int[]>comparingInt(p->p[1]).thenComparingInt(p->p[0]));
+        Arrays.sort(a,new MIN());
+        // Arrays.sort(a,Comparator.<int[]>comparingInt(p->p[1]).thenComparingInt(p->p[0]));
         
               for(int i=0;i<N;i++)
         {
@@ -82,15 +82,15 @@ class Solution {
         }
         return ans;
     }
-    // static class MIN implements Comparator<int[]>
-    // {
-    //     public int compare(int a[],int b[])
-    //     {
-    //         if(a[1]>b[1]) return 1;
-    //         else if(a[1]<b[1]) return -1;
-    //         else if(a[0]>b[0]) return 1;
-    //         else if(a[0]<b[0]) return -1;
-    //         else return 0;
-    //     }
-    // }
+    static class MIN implements Comparator<int[]>
+    {
+        public int compare(int a[],int b[])
+        {
+            if(a[1]>b[1]) return 1;
+            else if(a[1]<b[1]) return -1;
+            else if(a[0]>b[0]) return 1;
+            else if(a[0]<b[0]) return -1;
+            else return 0;
+        }
+    }
 };
