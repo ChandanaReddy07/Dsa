@@ -1,5 +1,6 @@
 class Solution {
     public int maxEvents(int[][] events) {
+        
          Arrays.sort(events , (obj1,obj2) -> {
             if(obj1[1] == obj2[1]){
                 return obj1[0] - obj2[0];
