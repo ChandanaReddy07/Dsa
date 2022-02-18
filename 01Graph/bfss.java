@@ -15,7 +15,7 @@ public static void Bfs(int s){
 
         System.out.println(p);
 
-        Iterator<Integer> it = graph[p].listIterator();
+        Iterator<Integer> it = graph[p].listIterator();// iterate through the ll
 
         while(it.hasNext){
             int n =it.next();
