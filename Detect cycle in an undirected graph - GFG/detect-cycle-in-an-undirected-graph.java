@@ -100,7 +100,7 @@ class Solution {
         
         return false; 
     }
-    // 0-based indexing Graph
+    
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj)
     {
         boolean vis[] = new boolean[V];
