@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-      PriorityQueue<ListNode> heap=new PriorityQueue<>((a,b)-> a.val-b.val);
+      PriorityQueue<ListNode> heap=new PriorityQueue<>((a,b)-> a.val-b.val);// min heap
         ListNode head=null;
         ListNode cur=null;
         for(ListNode list:lists){
