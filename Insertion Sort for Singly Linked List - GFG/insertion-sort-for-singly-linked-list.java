@@ -87,7 +87,9 @@ class Solution
         while(head != null){
 
             Node tmp=head.next;
-
+            
+            
+            //swap if get lesser value in first index
             if(res == null || res.data > head.data){
                 Node t=res;
                 res=head;
@@ -98,15 +100,12 @@ class Solution
             else{
                 Node cur=res;
                 
+                
+                //as i get head value greater ill keep it at last position
                 while(cur.next != null && cur.next.data <= head.data){
                     cur=cur.next;
-                 //    System.out.print("dfghjh>>");
                 
                 }
-                
-             //   System.out.println("dfgh>>"+ cur.data);
-             //   System.out.println("head>>"+ head.data);
-                
 
                 Node nxt=cur.next;
                 cur.next=head;
