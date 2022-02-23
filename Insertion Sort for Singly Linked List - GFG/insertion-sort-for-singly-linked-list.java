@@ -100,7 +100,8 @@ class Solution
             else{
                 
                 Node cur=res;
-                //as i get head value greater ill keep it at last position
+                //as i get head value greater ill keep it at last position or
+                //on its correct positon in between
                 while(cur.next != null && cur.next.data <= head.data){
                     cur=cur.next;
                 }
