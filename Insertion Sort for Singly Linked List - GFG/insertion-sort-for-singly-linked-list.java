@@ -98,13 +98,11 @@ class Solution
             }
 
             else{
+                
                 Node cur=res;
-                
-                
                 //as i get head value greater ill keep it at last position
                 while(cur.next != null && cur.next.data <= head.data){
                     cur=cur.next;
-                
                 }
 
                 Node nxt=cur.next;
