@@ -30,24 +30,18 @@ class Solution {
         // Code here
         
         int[] arr={0,0,0};
-        
         int ans = INT_MAX;
         int j=0;
         
         for(int i=0;i<S.length();i++){
-            arr[S.charAt(i)-'0']++;
             
-            // if(arr[0]*arr[1]*arr[2] > 0){
-            //     ans = Math.min(ans,i-j+1);
-            //     arr[S.charAt(i) - '0']--;
-            //     j++;
+            arr[S.charAt(i)-'0']++;
                 
                 while(j<i && arr[0]*arr[1]*arr[2]>0){
                     
                       ans = Math.min(ans, i - j + 1);
                       arr[S.charAt(j) - '0']--;
                       j++;
-                   
                 
             }
         }
