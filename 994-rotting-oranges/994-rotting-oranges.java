@@ -1,73 +1,156 @@
 class Solution {
-   public int orangesRotting(int[][] grid) {
-            
-        int[][] directions = new int [][]{
-            {-1, 0}, 
-            {0, 1},  
-            {1, 0},  
-            {0, -1}  
-        };
+
+    // structure for storing coordinates of the cell
+    static class Ele
+    {
+        int x = 0;
+        int y = 0;
+        Ele(int x,int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+     
+    // function to check whether a cell is valid / invalid
+    static boolean isValid(int r,int c,int i, int j)
+    {
+        return (i >= 0 && j >= 0 && i < r && j < c);
+    }
+     
+ 
+    // Function to check whether the cell is delimiter
+    // which is (-1, -1)
+    static boolean isDelim(Ele temp)
+    {
+        return (temp.x == -1 && temp.y == -1);
+    }
+     
+    // Function to check whether there is still a fresh
+    // orange remaining
+    static boolean checkAll(int arr[][])
+    {
+         for (int i=0; i<arr.length; i++)
+               for (int j=0; j<arr[0].length; j++)
+                  if (arr[i][j] == 1)
+                     return true;
+         return false;
+    }
+     
+    // This function finds if it is possible to rot all oranges or not.
+    // If possible, then it returns minimum time required to rot all,
+    // otherwise returns -1
+    static int orangesRotting(int arr[][])
+    {
+        // Create a queue of cells
+        Queue<Ele> Q=new LinkedList<>();
+        Ele temp;
+        int ans = 0;
         
-        if(grid.length == 0 || grid[0].length == 0)
-            return 0;
-        
-        int numberOfFreshOranges = 0;
-        Queue<int[]> queue = new LinkedList<>();
-        
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[0].length; j++){
-                if(grid[i][j] == 1){
-                    numberOfFreshOranges++;
-                } else if(grid[i][j] == 2){
-                    queue.add(new int[]{i, j});         
+        int r=arr.length;
+        int c = arr[0].length;
+         // Store all the cells having rotten orange in first time frame
+        for (int i=0; i < r; i++)
+           for (int j=0; j < c; j++)
+               if (arr[i][j] == 2)
+                   Q.add(new Ele(i,j));
+                 
+        // Separate these rotten oranges from the oranges which will rotten
+        // due the oranges in first time frame using delimiter which is (-1, -1)
+        Q.add(new Ele(-1,-1));
+         
+        // Process the grid while there are rotten oranges in the Queue
+        while(!Q.isEmpty())
+        {
+            // This flag is used to determine whether even a single fresh
+            // orange gets rotten due to rotten oranges in the current time
+            // frame so we can increase the count of the required time.
+            boolean flag = false;
+             
+            // Process all the rotten oranges in current time frame.
+            while(!isDelim(Q.peek()))
+            {
+                temp = Q.peek();
+                 
+                // Check right adjacent cell that if it can be rotten
+                if(isValid(r,c,temp.x+1, temp.y) && arr[temp.x+1][temp.y] == 1)
+                {
+                    if(!flag)
+                    {
+                        // if this is the first orange to get rotten, increase
+                        // count and set the flag.
+                        ans++;
+                        flag = true;
+                    }
+                    // Make the orange rotten
+                    arr[temp.x+1][temp.y] = 2;
+                     
+                    // push the adjacent orange to Queue
+                    temp.x++;
+                    Q.add(new Ele(temp.x,temp.y));
+                     
+                    // Move back to current cell
+                    temp.x--;
                 }
+                 
+                // Check left adjacent cell that if it can be rotten
+                if (isValid(r,c,temp.x-1, temp.y) && arr[temp.x-1][temp.y] == 1)
+                 {
+                        if (!flag)
+                        {
+                            ans++;
+                            flag = true;
+                        }
+                        arr[temp.x-1][temp.y] = 2;
+                        temp.x--;
+                        Q.add(new Ele(temp.x,temp.y)); // push this cell to Queue
+                        temp.x++;
+                 }
+                 
+                // Check top adjacent cell that if it can be rotten
+                 if (isValid(r,c,temp.x, temp.y+1) && arr[temp.x][temp.y+1] == 1) {
+                        if(!flag)
+                        {
+                            ans++;
+                            flag = true;
+                        }
+                        arr[temp.x][temp.y+1] = 2;
+                        temp.y++;
+                        Q.add(new Ele(temp.x,temp.y)); // Push this cell to Queue
+                        temp.y--;
+                    }
+                  
+                 // Check bottom adjacent cell if it can be rotten
+                 if (isValid(r,c,temp.x, temp.y-1) && arr[temp.x][temp.y-1] == 1)
+                 {
+                        if (!flag)
+                        {
+                            ans++;
+                            flag = true;
+                        }
+                        arr[temp.x][temp.y-1] = 2;
+                        temp.y--;
+                        Q.add(new Ele(temp.x,temp.y)); // push this cell to Queue
+                 }
+                 Q.remove();
+                  
             }
-        }
-        
-        int numberOfRottenOranges = queue.size();
-        
-        if(numberOfFreshOranges > 0  && numberOfRottenOranges == 0){
-            return -1;
-        } else if(numberOfFreshOranges == 0){
-            return 0;
-        }
-        
-        int count = 0;
-        
-        // initialized to -1 to ignore first round of existing rotten oranges
-        int minutes = -1;
-        while(!queue.isEmpty()){
-            int[] currentOrange = queue.poll();
-            count++;
-            int row = currentOrange[0];
-            int col = currentOrange[1];
-              
-            for(int i = 0; i < directions.length; i++){
-                int[] direction = directions[i];
-                int nextRow = row + direction[0];
-                int nextCol = col + direction[1];
-                
-                if(nextRow < 0 || nextRow >= grid.length || nextCol < 0 || nextCol >= grid[0].length)
-                    continue;
-                
-                if(grid[nextRow][nextCol] == 1){
-                    queue.add(new int[]{nextRow, nextCol});
-                    grid[nextRow][nextCol] = 2; 
-                    numberOfFreshOranges--;
-                }    
+            // Pop the delimiter
+            Q.remove();
+             
+            // If oranges were rotten in current frame than separate the
+            // rotten oranges using delimiter for the next frame for processing.
+            if (!Q.isEmpty())
+            {
+                Q.add(new Ele(-1,-1));
             }
-            
-            if(count == numberOfRottenOranges){
-                count = 0;
-                numberOfRottenOranges = queue.size();
-                minutes++;
-            }
+             
+            // If Queue was empty than no rotten oranges left to process so exit
         }
-        
-        if(numberOfFreshOranges > 0)
-            return -1;
-        
-        return minutes;
+         
+        // Return -1 if all arranges could not rot, otherwise ans
+        return (checkAll(arr))? -1: ans;
+         
     }
 }
 
