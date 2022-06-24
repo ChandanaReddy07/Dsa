@@ -29,15 +29,15 @@ int main() {
 
 //User function Template for C++
 
-string reverseWord(string str){
+string reverseWord(string s){
     
   //Your code here
   
   string res="";
  
-  for(int i=str.length()-1;i>=0;i--){
+  for(int i=s.length()-1;i>=0;i--){
       
-      res= res +  str[i] ;  
+      res= res +  s[i] ;  
   }
   
    return res;
