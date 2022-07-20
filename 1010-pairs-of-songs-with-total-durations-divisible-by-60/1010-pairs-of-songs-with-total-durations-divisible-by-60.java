@@ -13,8 +13,10 @@ class Solution {
             
             if(mod!=0)
             hm.put(mod ,hm.getOrDefault(mod, 0) + 1);
-            else
-             hm.put(60 ,hm.getOrDefault(60, 0) + 1);
+            else{
+                hm.put(60 ,hm.getOrDefault(60, 0) + 1);
+            }
+            
         }
         return ans;
     
