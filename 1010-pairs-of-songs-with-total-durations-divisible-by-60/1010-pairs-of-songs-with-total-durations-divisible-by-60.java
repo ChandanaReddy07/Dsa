@@ -9,8 +9,7 @@ class Solution {
             int betterhalf = 60 - mod ;
             if(hm.containsKey(betterhalf)) {
                 ans += hm.get(betterhalf);
-            }
-            
+            }    
             if(mod!=0)
             hm.put(mod ,hm.getOrDefault(mod, 0) + 1);
             else{
