@@ -29,7 +29,7 @@ class Solution {
         if(root.val == 3) {
            return left && right; 
         }
-        return true;
+        return false;
         
     }
     
