@@ -20,9 +20,9 @@ class MyStack {
             q2.add(top);
         }
         int x=q1.remove();
-        Queue<Integer> temp=q1;
+      
         q1=q2;
-        q2=temp;
+        q2=new LinkedList<>();
         return x;
         
     }
